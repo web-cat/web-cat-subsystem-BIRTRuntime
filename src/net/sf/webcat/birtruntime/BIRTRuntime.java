@@ -158,7 +158,7 @@ public class BIRTRuntime
         File configAreaDir = new File(configArea);
         if(configAreaDir.exists())
         {
-            net.sf.webcat.archives.FileUtilities.deleteDirectory(configAreaDir);
+            net.sf.webcat.core.FileUtilities.deleteDirectory(configAreaDir);
         }
 
         // Copy the initial config area files from the ReportEngine subfolder.
@@ -169,7 +169,7 @@ public class BIRTRuntime
 
         try
         {
-            net.sf.webcat.archives.FileUtilities
+            net.sf.webcat.core.FileUtilities
                 .copyDirectoryContentsIfNecessary(configSrcDir,
                         configAreaDir);
         }
