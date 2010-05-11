@@ -19,7 +19,7 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.birtruntime;
+package org.webcat.birtruntime;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,14 +36,14 @@ import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.birt.report.model.api.DesignConfig;
 import org.eclipse.birt.report.model.api.IDesignEngine;
 import org.eclipse.birt.report.model.api.IDesignEngineFactory;
+import org.webcat.core.Application;
+import org.webcat.core.Subsystem;
 import com.webobjects.eoaccess.EOUtilities;
 import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSBundle;
 import com.webobjects.foundation.NSData;
 import com.webobjects.foundation.NSMutableArray;
-import net.sf.webcat.core.Application;
-import net.sf.webcat.core.Subsystem;
 
 //-------------------------------------------------------------------------
 /**
@@ -85,7 +85,7 @@ public class BIRTRuntime
 
     // ----------------------------------------------------------
     /* (non-Javadoc)
-     * @see net.sf.webcat.core.Subsystem#init()
+     * @see org.webcat.core.Subsystem#init()
      */
     public void init()
     {
@@ -144,10 +144,10 @@ public class BIRTRuntime
         // chosen by the Web-CAT admin. Otherwise, the default location is in
         // the report engine path specified above, which could be read-only.
 
-        String configArea = net.sf.webcat.core.Application
+        String configArea = org.webcat.core.Application
             .configurationProperties().getProperty("grader.submissiondir") +
             "/ReporterConfiguration";
-        String instanceArea = net.sf.webcat.core.Application
+        String instanceArea = org.webcat.core.Application
             .configurationProperties().getProperty("grader.submissiondir") +
             "/ReporterWorkspace";
 
@@ -158,7 +158,7 @@ public class BIRTRuntime
         File configAreaDir = new File(configArea);
         if(configAreaDir.exists())
         {
-            net.sf.webcat.core.FileUtilities.deleteDirectory(configAreaDir);
+            org.webcat.core.FileUtilities.deleteDirectory(configAreaDir);
         }
 
         // Copy the initial config area files from the ReportEngine subfolder.
@@ -169,7 +169,7 @@ public class BIRTRuntime
 
         try
         {
-            net.sf.webcat.core.FileUtilities
+            org.webcat.core.FileUtilities
                 .copyDirectoryContentsIfNecessary(configSrcDir,
                         configAreaDir);
         }
