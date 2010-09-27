@@ -36,21 +36,15 @@ import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.birt.report.model.api.DesignConfig;
 import org.eclipse.birt.report.model.api.IDesignEngine;
 import org.eclipse.birt.report.model.api.IDesignEngineFactory;
-import org.webcat.core.Application;
 import org.webcat.core.Subsystem;
-import com.webobjects.eoaccess.EOUtilities;
-import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSBundle;
-import com.webobjects.foundation.NSData;
-import com.webobjects.foundation.NSMutableArray;
 
 //-------------------------------------------------------------------------
 /**
  *  Initializes the BIRT runtime for use in report generation.
  *
  *  @author  Anthony Allevato
- *  @version $Id$
+ *  @author  Last changed by $Author$
+ *  @version $Revision$, $Date$
  */
 public class BIRTRuntime
     extends Subsystem
@@ -154,7 +148,7 @@ public class BIRTRuntime
         // Delete the old configuration area. There aren't any settings here
         // that need to persist, and the caching really just causes problems
         // when versions of the BIRT runtime are upgraded.
-        
+
         File configAreaDir = new File(configArea);
         if(configAreaDir.exists())
         {
@@ -199,7 +193,7 @@ public class BIRTRuntime
 
         // Direct OSGI to use the new configuration and workspace areas.
 
-        Map osgiConfig = new Hashtable();
+        Map<String, String> osgiConfig = new Hashtable<String, String>();
         osgiConfig.put("osgi.configuration.area", configArea);
         osgiConfig.put("osgi.instance.area", instanceArea);
         config.setOSGiConfig(osgiConfig);
